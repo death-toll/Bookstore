@@ -1,0 +1,13 @@
+book_id,name,author_id,price,genre,summary
+101,The Great Gatsby,1,10.99,Fiction,A novel about the American dream and the decadence of the Jazz
+102,To Kill a Mockingbird,2,12.99,Fiction,A novel about racial injustice in the Deep South
+103,1984,3,9.99,Dystopian,A novel about surveillance and totalitarian control
+104,Animal Farm,3,7.99,Political satire,An allegory about power and propaganda
+105,Harry Potter and the Sorcerer's Stone,4,14.99,Fantasy,A young wizard begins his journey at Hogwarts
+106,Harry Potter and the Chamber of Secrets,4,15.49,Fantasy,The mystery of the Chamber of Secrets threatens Hogwarts
+107,The Hobbit,5,13.25,Fantasy,A hobbit is swept into an epic quest with dwarves
+108,The Lord of the Rings,5,22.99,Fantasy,An epic journey to destroy a powerful ring
+109,Pride and Prejudice,6,8.75,Classic,A romantic novel of manners and misunderstandings
+110,Murder on the Orient Express,7,11.50,Mystery,A detective investigates a murder on a luxury train
+
+
