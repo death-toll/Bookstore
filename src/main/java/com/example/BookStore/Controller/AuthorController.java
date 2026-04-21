@@ -25,7 +25,7 @@ public class AuthorController {
         return authorService.save(author);
 
     }
-    @PatchMapping("/update/author")
+
 
 
 }
