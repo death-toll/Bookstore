@@ -29,7 +29,7 @@ pipeline {
 
     stage('Package Artifact') {
       steps {
-        bat 'ls -la target || true'
+        bat 'dir target'
         archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
       }
     }
