@@ -25,6 +25,10 @@ public class AuthorController {
         return authorService.save(author);
 
     }
+    @DeleteMapping("/delete/author")
+    public void delete_author(@RequestParam Author a2){
+        authorService.delete(a2);
+    }
 
 
 

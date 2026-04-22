@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -58,6 +59,12 @@ class BookRepoTest {
     }
 
     @Test
+    void existsById_returnsTrue_whenPresent() {
+        assertThat(bookRepo.existsById(101)).isTrue();
+        assertThat(bookRepo.existsById(999)).isFalse();
+    }
+
+    @Test
     void save_persistsBook() {
         Author a = authorRepo.findById(1).orElseThrow();
         Books b2 = new Books();
@@ -73,6 +80,17 @@ class BookRepoTest {
     }
 
     @Test
+    void save_updatesExistingBook_whenSameId() {
+        Books existing = bookRepo.findById(101).orElseThrow();
+        existing.setPrice(99.99);
+        bookRepo.save(existing);
+
+        Books reloaded = bookRepo.findById(101).orElseThrow();
+        assertThat(reloaded.getPrice()).isEqualTo(99.99);
+        assertThat(bookRepo.count()).isEqualTo(1);
+    }
+
+    @Test
     void delete_removesBook() {
         bookRepo.deleteById(101);
         assertThat(bookRepo.findById(101)).isEmpty();
@@ -80,7 +98,9 @@ class BookRepoTest {
 
     @Test
     void findAll_returnsAllBooks() {
-        assertThat(bookRepo.findAll()).hasSize(1);
+        List<Books> all = bookRepo.findAll();
+        assertThat(all).hasSize(1);
+        assertThat(all.get(0).getName()).isEqualTo("Clean Code");
     }
 }
 

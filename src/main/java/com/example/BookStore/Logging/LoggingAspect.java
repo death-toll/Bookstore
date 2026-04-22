@@ -1,5 +1,6 @@
 package com.example.BookStore.Logging;
 
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
 import org.aspectj.lang.JoinPoint;
@@ -24,5 +25,9 @@ public class LoggingAspect {
   @Before("execution(* com.example.BookStore.Controller..*(..)) || execution(* com.example.BookStore.Service..*(..))")
     public void logMethodCall(JoinPoint jp) {
         LOGGER.info("Method Called {}", jp.getSignature().getName());
+    }
+    @After("execution(* com.example.BookStore.Controller..*(..)) || execution(* com.example.BookStore.Service..*(..))")
+    public void logMethodCalled(JoinPoint jp) {
+        LOGGER.info("Method  {} is executed", jp.getSignature().getName());
     }
 }
